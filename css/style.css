@@ -1,0 +1,59 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #ededed;
+}
+
+header{
+    height: 100px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size:30px;
+}
+
+main{
+    height: calc(100vh - 300px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#km,
+#età,
+#biglietto,
+#scontointero,
+#minorenni,
+#sconminorenni,
+#over65,
+#scontoover65{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+footer{
+    height: 200px;
+    display: flex;
+    justify-content: flex-end;
+    border: 5px solid brown;
+    border-style: hidden hidden dashed hidden;
+}
+
+.animation img{
+    height: 300px;
+    width: 300px;
+    object-fit: contain;
+    position: absolute;
+    animation-name: train;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes train {
+    from {right: 0px}
+    to {right : 100%}
+}

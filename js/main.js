@@ -7,7 +7,7 @@ document.getElementById('km').innerHTML = 'Il tuo viaggio sarà di: ' + numeroKm
 
 // Info: Quanti anni hai?
 var etàUtente = prompt('Quanti anni hai?');
-// document.getElementById('età').innerHTML = 'Età: ' + etàUtente + ' anni';
+document.getElementById('età').innerHTML = 'Età: ' + etàUtente + ' anni';
 
 //Prezzo di un singolo Km
 var prezzoSingoloKm = 0.21;
