@@ -2,16 +2,15 @@
 
 // Info: Quanti Km vuoi percorrere?
 var numeroKmDaPercorrere = prompt('Quanti km vuoi percorrere?');
-document.getElementById('km').innerHTML = numeroKmDaPercorrere;
+document.getElementById('km').innerHTML = 'Il tuo viaggio sarà di: ' + numeroKmDaPercorrere + ' km';
 
 
 // Info: Quanti anni hai?
 var etàUtente = prompt('Quanti anni hai?');
-document.getElementById('età').innerHTML = etàUtente;
+// document.getElementById('età').innerHTML = 'Età: ' + etàUtente + ' anni';
 
 //Prezzo di un singolo Km
 var prezzoSingoloKm = 0.21;
-
 
 //Prezzo totale del viaggio
 var prezzoBiglietto = prezzoSingoloKm * numeroKmDaPercorrere;
@@ -25,13 +24,13 @@ var bigliettoMinorenni = prezzoBiglietto - bigliettoMinorenni;
 
 
 //Quanto mi costeranno i biglietti se sono Over 65 (40%)?
-var bigliettoOver65 = ((prezzoBiglietto * 40) / 100)
+var bigliettoOver65 = ((prezzoBiglietto * 40) / 100);
 var bigliettoOver65 = prezzoBiglietto - bigliettoOver65;
 // document.getElementById('over65').innerHTML = bigliettoOver65;
 
 
 
-//STEP 2: collegare i correlativi prezzi in base al "click" sull'età definita
+//STEP 3: collegare i correlativi prezzi in base al "click" sull'età definita
 
 //Biglietti 20% se si è minorenni
 //  0 <------------>= 16
@@ -40,10 +39,35 @@ var bigliettoOver65 = prezzoBiglietto - bigliettoOver65;
 //Biglietti 40% se si è bigliettoOver65
 // 65 <= 65 -------------->
 
-if ( etàUtente <= 16) {
-    document.getElementById('minorenni').innerHTML = 'Il prezzo di un biglietto sotto i 17 anni è di' + bigliettoMinorenni ;
+if ( etàUtente <= 18) {
+    document.getElementById('minorenni').innerHTML = 'Il tuo prezzo è scontato del 20%; pagherai: ' + bigliettoMinorenni + '€';
 } else if (etàUtente >= 65){
-    document.getElementById('over65').innerHTML = 'Il prezzo di un biglietto sopra i 65 anni è di' + bigliettoOver65 ;
+    document.getElementById('over65').innerHTML = 'Il tuo prezzo è scontato del 40%; pagherai: ' + bigliettoOver65 + '€';
 } else {
-    document.getElementById('biglietto').innerHTML = 'Il prezzo di un signolo bilgietto è di' + prezzoBiglietto;
+    document.getElementById('biglietto').innerHTML = 'Il prezzo di un signolo bilgietto è di: ' + prezzoBiglietto + '€';
+}
+
+//EXTRA Aggiungi un codice sconto per aver un ulteriore sconto del 10%:
+var inserisciSconto = prompt('Affrettati, solo per oggi potrai usufruire di uno sconto del 10% extra! Insierisci il codice 10 per il prezzo pieno, 18 sotto i 18 anni, e 65 sopra i 65 anni!')
+
+//Sconto del 10% sul totale "prezzo intero"
+var prezzoIntero = (prezzoBiglietto * 10) / 100;
+var prezzoIntero = prezzoBiglietto - prezzoIntero;
+// document.getElementById('sconto').innerHTML = 'Complimenti, hai un ulteriore sconto di ' + codice + ' € sul prezzo base';
+
+//Sconto del 10% sul totale "prezzo minorenne"
+var prezzoMinorenne = (prezzoBiglietto * 10) / 100;
+var prezzoMinorenne = bigliettoMinorenni - prezzoMinorenne;
+
+//Sconto del 10% sul totale "prezzo over65"
+var prezzoOver65 = (prezzoBiglietto * 10) / 100;
+var prezzoOver65 = bigliettoOver65 - prezzoOver65;
+
+
+if (( inserisciSconto >9 ) && (inserisciSconto <= 10)){
+     document.getElementById('scontointero').innerHTML = 'Complimenti, il tuo prezzo scontato da codice è ora di ' + prezzoIntero + '€';
+} else if (( inserisciSconto >17) && (inserisciSconto <=18)) {
+     document.getElementById('scontominorenni').innerHTML = 'Complimenti, il tuo prezzo scontato da codice è ora di ' + prezzoMinorenne + '€';
+} else if (( inserisciSconto > 64) && (inserisciSconto <= 65)) {
+     document.getElementById('scontoover65').innerHTML = 'Complimenti, il tuo prezzo scontato da codice è ora di ' + prezzoOver65 + '€';
 }
